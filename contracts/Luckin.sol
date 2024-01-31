@@ -10,7 +10,7 @@ contract Luckin{
     uint256 private totalSupply;
     uint256 private id;
 
-    event coffeePurchased(address buyer, uint256 coffeeId);
+    event coffeePurchased(address indexed buyer, uint256 indexed coffeeId);
 
     error noMoreCoffee();    
 
