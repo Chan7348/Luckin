@@ -15,15 +15,15 @@ contract Luckin{
     error noMoreCoffee();    
 
 
-    function makeCoffee() public {
+    function makeCoffee() external {
         totalSupply++;
     }
 
-    function haveSpareCoffee() public view returns (bool) {
+    function haveSpareCoffee() external view returns (bool) {
        return id < totalSupply;
     }
 
-    function buyCoffee() public {
+    function buyCoffee() external {
         // require(id < totalSupply, "No more coffee!!!");
         if (id < totalSupply) revert noMoreCoffee();
         idToAddress[id] = msg.sender;
