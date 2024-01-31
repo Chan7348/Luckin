@@ -4,11 +4,11 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Luckin{
-    mapping(uint => address) idToAddress;
-    uint private totalSupply;
-    uint private id;
+    mapping(uint256 => address) idToAddress;
+    uint256 private totalSupply;
+    uint256 private id;
 
-    event coffeePurchased(address buyer, uint coffeeId);
+    event coffeePurchased(address buyer, uint256 coffeeId);
     
 
 
