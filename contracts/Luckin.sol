@@ -9,7 +9,8 @@ contract Luckin{
     uint256 private id;
 
     event coffeePurchased(address buyer, uint256 coffeeId);
-    
+
+    error noMoreCoffee();    
 
 
     function makeCoffee() public {
@@ -21,7 +22,8 @@ contract Luckin{
     }
 
     function buyCoffee() public {
-        require(id < totalSupply, "No more coffee!!!");
+        // require(id < totalSupply, "No more coffee!!!");
+        if (id < totalSupply) revert noMoreCoffee();
         idToAddress[id] = msg.sender;
         emit coffeePurchased(msg.sender, id);
         id++;
