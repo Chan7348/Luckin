@@ -4,37 +4,32 @@ pragma solidity 0.8.20;
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 
 // title: Luckin
-// @custom:security-contact: add7348@outlook.com
-contract Luckin{
-    // link the order
-    mapping(uint256 => address) public idToAddress;
+contract Luckin{ // @custom:security-contact: add7348@outlook.com
+    
+    mapping(uint256 id => address consumer) public idToConsumer; // link the order
 
-    // current totalsupply
-    uint256 private totalSupply;
-    // the first coffee to sale, when it's been sold, id++
-    uint256 private id;
+    uint256 private totalSupply;  // current totalsupply
+    
+    uint256 private id; // the first coffee to sale, when it's been sold, id++
+    
+    event coffeePurchased(address indexed buyer, uint256 indexed coffeeId); // broadcast a coffee purchase
 
-    // broadcast a coffee purchase
-    event coffeePurchased(address indexed buyer, uint256 indexed coffeeId);
-
-    // error
-    error noMoreCoffee();    
-
-    // make one more coffee
-    function makeCoffee() external {
+    error noMoreCoffee(); // error   
+    
+    function makeCoffee() external { // make one more coffee
         totalSupply++;
     }
 
-    // return if there is spare coffee
-    function haveSpareCoffee() external view returns (bool) {
+    
+    function haveSpareCoffee() external view returns (bool) { // return if there is spare coffee
        return id < totalSupply;
     }
 
-    // buy coffee
-    function buyCoffee() external {
+
+    function buyCoffee() external { // buy coffee
         // require(id < totalSupply, "No more coffee!!!");
         if (id < totalSupply) revert noMoreCoffee();
-        idToAddress[id] = msg.sender;
+        idToConsumer[id] = msg.sender;
         emit coffeePurchased(msg.sender, id);
         id++;
     }

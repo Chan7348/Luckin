@@ -19,3 +19,6 @@ deploy cost:
 
 second deployment:
 address: 0xc1145525cFAff77A3C467B5819dF08CD300A1262
+
+third deployment:
+address: 0x4A9c4baBd3778202c019bE5aB0222591D626aAdE
