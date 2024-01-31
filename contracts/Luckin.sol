@@ -3,6 +3,8 @@ pragma solidity ^0.8.20;
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 
+// title: Luckin
+// @custom:security-contact: add7348@outlook.com
 contract Luckin{
     mapping(uint256 => address) public idToAddress;
     uint256 private totalSupply;
